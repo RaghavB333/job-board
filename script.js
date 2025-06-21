@@ -1,3 +1,5 @@
+//initializing variables to be used to manipulate DOM directly or indirectly
+
 let jobs = [];
 
 const jobContainer = document.getElementById("jobs");
@@ -15,26 +17,26 @@ const hamburger = document.getElementById("hamburger");
 const responsiveNavbar = document.getElementById("responsiveNavbar");
 
 
-
+//to display or hide modal
 document.getElementById("closeModal").addEventListener("click", () => {
     modal.classList.add("hidden");
     modal.setAttribute("aria-hidden", "true");
 });
 
+//show the loading jobs or not
+loader.classList.remove("hidden");
+
 //fetch jobs
 fetch("mock-jobs.json")
-    .then(res => {
-        loader.classList.remove("hidden"); // show loader
-        return res.json();
-    })
-    .then(data => {
+    .then(res => res.json())
+    .then(async data => {
         jobs = data;
         applyFilters(jobs);
-        filterJobs();
-        loader.classList.add("hidden"); // hide loader
+        await showJobs(jobs);
+        loader.classList.add("hidden");
     })
     .catch(error => {
-        loader.textContent = "Failed to load jobs.";
+        loader.innerHTML = "<p style='color: red;'>Failed to load jobs.</p>";
         console.error("Error fetching jobs:", error);
     });
 
@@ -50,7 +52,9 @@ function applyFilters(jobs) {
 }
 
 //job list display
-function showJobs(filteredJobs) {
+async function showJobs(filteredJobs) {
+    await new Promise(resolve => setTimeout(resolve, 2000));
+
     jobContainer.innerHTML = "";
 
     if (filteredJobs.length === 0) {
@@ -71,6 +75,7 @@ function showJobs(filteredJobs) {
     });
 }
 
+//displaying modal
 function openModal(id) {
     const job = jobs.find(j => j.id === id);
     modalTitle.textContent = job.title;
@@ -82,41 +87,43 @@ function openModal(id) {
     modal.setAttribute("aria-hidden", "false");
 }
 
-
+//triggering filer job functions w.r.t change in dropdown/search values
 departmentFilter.addEventListener("change", filterJobs);
 searchInput.addEventListener("input", filterJobs);
 
-function filterJobs() {
+// function to filter jobs 
+async function filterJobs() {
     const dep = departmentFilter.value.toLowerCase();
     const search = searchInput.value.toLowerCase();
 
     let filtered;
 
     if (search) {
-        // Prioritize keyword search only
         filtered = jobs.filter(job =>
             job.title.toLowerCase().includes(search)
         );
     } else if (dep) {
-        // Fallback to department filter only if search is empty
         filtered = jobs.filter(job =>
             job.department.toLowerCase() === dep
         );
     } else {
-        // Show all if both are empty
         filtered = jobs;
     }
 
-    showJobs(filtered);
+    jobContainer.innerHTML = "";          
+    loader.classList.remove("hidden");     
+    await showJobs(filtered);              
+    loader.classList.add("hidden");        
 }
 
 
 
-
+//showing hamburger and responsive navbar on smaller screens
 hamburger.addEventListener("click", () => {
     responsiveNavbar.classList.toggle("hidden");
 });
 
+//switiching dark and light themes
 const themeToggle = document.getElementById("themeToggle");
 
 
@@ -139,8 +146,8 @@ themeToggle.addEventListener("click", () => {
 
 
 document.addEventListener("keydown", function (e) {
-  if (e.key === "Escape" && !modal.classList.contains("hidden")) {
-    modal.classList.add("hidden");
-    modal.setAttribute("aria-hidden", "true");
-  }
+    if (e.key === "Escape" && !modal.classList.contains("hidden")) {
+        modal.classList.add("hidden");
+        modal.setAttribute("aria-hidden", "true");
+    }
 });

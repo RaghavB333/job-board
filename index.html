@@ -9,6 +9,8 @@
 </head>
 
 <body class="light-theme">
+
+    <!-- navbar -->
     <nav class="navbar" role="navigation" aria-label="Main navigation">
         <div>
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBLxi-fngdGYccd_APE654S0_XfXsYV-sPsQ&s"
@@ -21,6 +23,7 @@
             <li tabindex="0">Contact</li>
         </ul>
 
+        <!-- hamburger for smaller screens -->
         <button class="hamburger" id="hamburger">&#9776;</button>
 
         <div class="responsive-navbar hidden" id="responsiveNavbar" role="menu for smaller screens">
@@ -30,9 +33,11 @@
                 <li tabindex="0">Contact</li>
             </ul>
         </div>
+        <!-- theme toggler (light/dark theme) -->
         <button id="themeToggle" aria-label="Toggle theme">🌙</button>
     </nav>
 
+    <!-- header section with logo and headings  -->
     <header class="header">
         <img class="logo"
             src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBLxi-fngdGYccd_APE654S0_XfXsYV-sPsQ&s"
@@ -53,6 +58,7 @@
 
     </header>
 
+    <!-- job filtering -->
     <section id="filters" aria-label="Job filters">
         <select id="departmentFilter" aria-label="Department filter">
             <option value="">Choose Your Department</option>
@@ -66,8 +72,12 @@
         <span class="loader-text">Loading jobs...</span>
     </div>
 
+
+    <!-- job card display -->
     <main id="jobs" aria-label="Available jobs"></main>
 
+
+    <!-- modal -->
     <div id="modal" class="hidden" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-hidden="true">
         <div class="modal-content">
             <button id="closeModal" aria-label="Close modal">X</button>

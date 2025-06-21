@@ -1,0 +1,37 @@
+[
+  {
+    "id": 1,
+    "title": "Frontend Developer",
+    "department": "Engineering",
+    "location": "Remote",
+    "description": "We're looking for a skilled frontend developer with experience in React.js and modern CSS."
+  },
+  {
+    "id": 2,
+    "title": "UX Designer",
+    "department": "Design",
+    "location": "Bangalore",
+    "description": "Design beautiful interfaces and delightful user experiences."
+  },
+  {
+    "id": 3,
+    "title": "Backend Engineer",
+    "department": "Engineering",
+    "location": "Mumbai",
+    "description": "Build scalable APIs using Node.js and databases."
+  },
+  {
+    "id": 4,
+    "title": "HR Manager",
+    "department": "Human Resources",
+    "location": "Delhi",
+    "description": "Looking for an HR professional with 5+ years of experience."
+  },
+  {
+    "id": 5,
+    "title": "Marketing Analyst",
+    "department": "Marketing",
+    "location": "Remote",
+    "description": "Use data to drive marketing strategy and performance."
+  }
+]

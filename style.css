@@ -1,0 +1,529 @@
+:root {
+    --bg-color: #0a0a0a;
+    --text-color: #ffffff;
+    --card-bg: #1d1e22;
+    --accent-color: #e79446;
+    --btn-bg: #a75305;
+    --btn-text: #ffffff;
+    --input-bg: #333;
+    --input-text: #fff;
+    --modal-bg: rgba(0, 0, 0, 0.6);
+}
+
+body.light-theme {
+    --bg-color: #c89666;
+    --text-color: #170202;
+    --card-bg: #fff1cc;
+    --accent-color: #ffa500;
+    --btn-bg: #f0ad4e;
+    --btn-text: #000;
+    --input-bg: #f2f2f2;
+    --input-text: #000;
+    --modal-bg: rgba(0, 0, 0, 0.4);
+}
+
+* {
+    transition: background-color 0.3s, color 0.3s;
+}
+
+body {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    margin: 0;
+    padding: 0;
+    background: var(--bg-color);
+    color: var(--text-color);
+}
+
+header {
+    text-align: center;
+    padding: 2rem;
+}
+
+.hidden {
+    display: none;
+}
+
+#modal.hidden {
+    display: none !important;
+}
+
+.navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+    margin-right: 20px;
+    color: var(--text-color);
+}
+
+.navbar-list {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.navbar-logo {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    margin-left: 100px;
+}
+
+.hamburger {
+    display: none;
+    font-size: 24px;
+    padding: 8px;
+    background-color: var(--accent-color);
+    border: none;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.responsive-navbar {
+    display: none;
+}
+
+.logo {
+    margin: 0px 95px;
+}
+
+.header {
+    display: flex;
+    color: var(--text-color);
+    margin-top: 75px;
+    margin-left: 10vw;
+    font-size: larger;
+}
+
+/* Title layout */
+.heading-wrap,
+.subheading-wrap {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 10px;
+}
+
+.heading-wrap h1,
+.subheading-wrap h4 {
+    margin: 0;
+}
+
+.light-white,
+.light-black {
+    color: inherit;
+    /* default for dark mode */
+}
+
+/* Theme-specific overrides */
+.light-theme .light-white {
+    color: white;
+}
+
+.light-theme .light-black {
+    color: black;
+}
+
+
+#filters {
+    margin-top: 50px;
+    margin-left: 40vw;
+    gap: 20px;
+}
+
+#departmentFilter,
+#searchInput {
+    border-radius: 20px;
+    padding: 10px;
+    background-color: var(--input-bg);
+    color: var(--input-text);
+    border: none;
+    font-weight: 700;
+}
+
+#searchInput {
+    margin-left: 20px;
+}
+
+.or {
+    margin-left: 10px;
+    color: aliceblue;
+    font-weight: 700;
+}
+
+.loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  color: #fff;
+  font-weight: bold;
+  gap: 10px;
+}
+
+.spinner {
+  width: 20px;
+  height: 20px;
+  border: 3px solid #f3f3f3;
+  border-top: 3px solid #e79446;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.loader-text {
+  font-size: 1rem;
+}
+
+/* Only visible when not .hidden */
+.loader.hidden {
+  display: none !important;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+
+#jobListings {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    padding: 1rem;
+    gap: 1rem;
+}
+
+.job-card {
+    background: var(--card-bg);
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+    color: var(--text-color);
+}
+
+.job-heading {
+    font-style: italic;
+    font-weight: 800;
+    font-size: 25px;
+}
+
+.job-content {
+    font-weight: 500;
+    font-size: 19px;
+}
+
+.apply-btn {
+    background-color: var(--btn-bg);
+    color: var(--btn-text);
+    border-radius: 10px;
+    padding: 8px;
+    border: none;
+}
+
+.apply-btn:hover {
+    cursor: pointer;
+}
+
+#modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--modal-bg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    padding: 2rem;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 500px;
+}
+
+#closeModal {
+    position: relative;
+    left: 32vw;
+    bottom: 10px;
+    border-radius: 5px;
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    border: none;
+}
+
+#closeModal:hover {
+    cursor: pointer;
+}
+
+#applyLink {
+    color: var(--text-color);
+    padding: 3px;
+    border-radius: 3px;
+}
+
+#themeToggle {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.split-heading,
+.split-subheading {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 5px;
+    font-weight: bold;
+    justify-content: center;
+    text-align: center;
+    flex-wrap: wrap;
+}
+
+/* These span classes will flip colors in light mode */
+.split-heading .left-half,
+.split-subheading .right-half {
+    color: inherit;
+}
+
+.split-heading .right-half,
+.split-subheading .left-half {
+    color: white;
+}
+
+/* Apply overrides only in light mode */
+.light-theme .split-heading .left-half,
+.light-theme .split-subheading .right-half {
+    color: #000;
+}
+
+.light-theme .split-heading .right-half,
+.light-theme .split-subheading .left-half {
+    color: #fff;
+}
+
+.visually-hidden {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 10px;
+    }
+
+    .navbar-logo {
+        margin-left: 10px;
+        width: 60px;
+        height: 60px;
+    }
+
+    .navbar-list {
+        display: none;
+    }
+
+    .hamburger {
+        display: block;
+        position: relative;
+        left:43vw
+    }
+
+    #themeToggle{
+        margin-right: 50px;
+    }
+
+    .responsive-navbar {
+        display: none;
+        position: absolute;
+        top: 60px;
+        right: 10px;
+        background-color: var(--card-bg);
+        color: var(--text-color);
+        width: 60vw;
+        border-radius: 8px;
+        padding: 1rem;
+        z-index: 999;
+    }
+
+    .responsive-navbar:not(.hidden) {
+        display: block;
+    }
+
+    .responsive-navbar-list {
+        list-style: none;
+        padding: 0;
+    }
+
+    .responsive-navbar-list li {
+        margin: 10px 0;
+        cursor: pointer;
+    }
+
+    .header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        margin-left: 0;
+        margin-top: 30px;
+    }
+
+    .title {
+        align-items: center;
+        text-align: center;
+        justify-content: center;
+    }
+
+    .split-heading{
+        flex-direction: row;
+        flex-wrap: wrap;
+        font-size: 1.8rem;
+    }
+    .split-subheading {
+        flex-direction: row;
+        flex-wrap: wrap;
+        font-size: 1.2rem;
+    }
+
+
+
+    #filters {
+        margin-left: 0;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin: 0px 20vw;
+    }
+
+    #searchInput {
+        margin-left: 0px;
+    }
+
+    .or {
+        margin-left: 0px;
+    }
+
+    .logo {
+        margin: 0;
+    }
+
+    #jobs {
+        padding: 0 10px;
+    }
+    #closeModal{
+        position: relative;
+        left:80vw;
+    }
+}
+@media (min-width: 601px) and (max-width: 1024px) {
+  .navbar {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px;
+  }
+
+  .navbar-logo {
+    margin-left: 10px;
+    width: 60px;
+    height: 60px;
+  }
+
+  .navbar-list {
+    display: none;
+  }
+
+  .hamburger {
+    display: block;
+    position: relative;
+    left: 46vw;
+  }
+
+  #themeToggle {
+    margin-right: 60px;
+  }
+
+  .responsive-navbar {
+    display: none;
+    position: absolute;
+    top: 60px;
+    right: 10px;
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    width: 60vw;
+    border-radius: 8px;
+    padding: 1rem;
+    z-index: 999;
+  }
+
+  .responsive-navbar:not(.hidden) {
+    display: block;
+  }
+
+  .responsive-navbar-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .responsive-navbar-list li {
+    margin: 10px 0;
+    cursor: pointer;
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-left: 0;
+    margin-top: 30px;
+  }
+
+  .title {
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+  }
+
+  .split-heading {
+    flex-direction: row;
+    flex-wrap: wrap;
+    font-size: 1.8rem;
+  }
+
+  .split-subheading {
+    flex-direction: row;
+    flex-wrap: wrap;
+    font-size: 1.2rem;
+  }
+
+  #filters {
+    margin: 0px 20vw;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+  }
+
+  #searchInput,
+  .or {
+    margin-left: 0;
+  }
+
+  .logo {
+    margin: 0;
+  }
+
+  #jobs {
+    padding: 0 10px;
+  }
+}

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Acme Job Board</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body class="light-theme">
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
+        <div>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBLxi-fngdGYccd_APE654S0_XfXsYV-sPsQ&s"
+                alt="Logo" class="navbar-logo" />
+        </div>
+
+        <ul class="navbar-list" role="navbar options">
+            <li tabindex="0">Home</li>
+            <li tabindex="0">About</li>
+            <li tabindex="0">Contact</li>
+        </ul>
+
+        <button class="hamburger" id="hamburger">&#9776;</button>
+
+        <div class="responsive-navbar hidden" id="responsiveNavbar" role="menu for smaller screens">
+            <ul class="responsive-navbar-list">
+                <li tabindex="0">Home</li>
+                <li tabindex="0">About</li>
+                <li tabindex="0">Contact</li>
+            </ul>
+        </div>
+        <button id="themeToggle" aria-label="Toggle theme">🌙</button>
+    </nav>
+
+    <header class="header">
+        <img class="logo"
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBLxi-fngdGYccd_APE654S0_XfXsYV-sPsQ&s"
+            alt="Acme Logo">
+        <div class="title">
+            <h1 class="split-heading">
+                <span class="left-half">Open Positions at</span>
+                <span class="right-half">Acme Corp</span>
+            </h1>
+            <h4 class="split-subheading">
+                <span class="left-half">Begin your Future Adventure at</span>
+                <span class="right-half">Acme Corp</span>
+            </h4>
+        </div>
+
+
+
+
+    </header>
+
+    <section id="filters" aria-label="Job filters">
+        <select id="departmentFilter" aria-label="Department filter">
+            <option value="">Choose Your Department</option>
+        </select>
+        <span class="or""> OR </span>
+    <input type=" text" id="searchInput" placeholder="Search job title..." aria-label="Search job title" />
+    </section>
+
+    <div id="loader" class="loader hidden" role="status" aria-live="polite" aria-busy="true">
+        <span class="spinner" aria-hidden="true"></span>
+        <span class="loader-text">Loading jobs...</span>
+    </div>
+
+    <main id="jobs" aria-label="Available jobs"></main>
+
+    <div id="modal" class="hidden" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-hidden="true">
+        <div class="modal-content">
+            <button id="closeModal" aria-label="Close modal">X</button>
+            <h2 id="modalTitle"></h2>
+            <p id="modalDepartment"></p>
+            <p id="modalLocation"></p>
+            <p id="modalDescription"></p>
+            <a id="applyLink" href="#" target="_blank">Apply Now</a>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
